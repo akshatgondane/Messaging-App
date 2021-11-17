@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:messaging_app/widgets/widget.dart';
-
+// ignore_for_file: prefer_const_constructors
 class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+  final Function toggle;
+  SignIn(this.toggle);
 
   @override
   _SignInState createState() => _SignInState();
@@ -13,7 +14,7 @@ class _SignInState extends State<SignIn>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff1F1F1F),
+      backgroundColor: Color(0xff1F1F1F),
       appBar: appBarMain(context),
       body: SingleChildScrollView(
         child: Container(
@@ -85,9 +86,17 @@ class _SignInState extends State<SignIn>{
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have account? ", style: new TextStyle(color: Colors.white, fontSize: 16)),
-                  Text("Register Now", style: new TextStyle(
-                      color: Colors.white, fontSize: 17, decoration: TextDecoration.underline),)
+                  Text("Don't have account? ", style: TextStyle(color: Colors.white, fontSize: 16)),
+                  GestureDetector(
+                    onTap: (){
+                      widget.toggle();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 8),
+                      child: Text("Register Now", style: TextStyle(
+                          color: Colors.white, fontSize: 17, decoration: TextDecoration.underline),)
+                    ),
+                  )
                 ],
               ),
 
