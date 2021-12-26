@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:messaging_app/helper/constants.dart';
 import 'package:messaging_app/services/database.dart';
 import 'package:messaging_app/widgets/widget.dart';
+
+import 'chat.dart';
 
 // ignore_for_file: prefer_const_constructors
 class SearchScreen extends StatefulWidget {
@@ -37,12 +40,68 @@ class _SearchScreenState extends State<SearchScreen> {
       itemBuilder: (context, index)
       {
         return SearchTile(
-            userName: searchSnapshot!.docs[index].get("name").toString(),
-            userEmail: searchSnapshot!.docs[index].get("email").toString());
+            searchSnapshot!.docs[index].get("name").toString(),
+            searchSnapshot!.docs[index].get("email").toString());
       },
     ) :  Container();
   }
+  Widget SearchTile(String userName,String userEmail) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(userName, style: simpleTextStyle(),),
+              Text(userEmail, style: simpleTextStyle(),)
 
+            ],
+          ),
+          Spacer(),
+          GestureDetector(
+            onTap: (){
+              sendMessage(userName);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: Text("Message"),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+  sendMessage(String userName){
+    List<String> users = [Constants.myName,userName];
+
+    String chatRoomId = getChatRoomId(Constants.myName,userName);
+
+    Map<String, dynamic> chatRoom = {
+      "users": users,
+      "chatRoomId" : chatRoomId,
+    };
+
+    databaseMethods.addChatRoom(chatRoom, chatRoomId);
+
+    Navigator.push(context, MaterialPageRoute(
+        builder: (context) => Chat(
+          chatRoomId: chatRoomId,
+        )
+    ));
+
+  }
+  getChatRoomId(String a, String b) {
+    if (a.substring(0, 1).codeUnitAt(0) > b.substring(0, 1).codeUnitAt(0)) {
+      return "$b\_$a";
+    } else {
+      return "$a\_$b";
+    }
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -109,43 +168,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 }
 
-class SearchTile extends StatelessWidget
-{
-  final String userName;
-  final String userEmail;
-  SearchTile({required this.userName, required this.userEmail});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(userName, style: simpleTextStyle(),),
-              Text(userEmail, style: simpleTextStyle(),)
 
-            ],
-          ),
-          Spacer(),
-          GestureDetector(
-            onTap: (){
 
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: Text("Message"),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
 
