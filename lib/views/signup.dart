@@ -38,12 +38,12 @@ class _SignUpState extends State<SignUp> {
           isLoading = true;
         });
         authMethods.signUpWithEmailAndPassword(emailTextEditingController.text,
-            passwordTextEditingController.text).then((val) {
+            passwordTextEditingController.text).then((val) async {
 
               databaseMethods.uploadUserInfo(userInfoMap);
-              HelperFunctions.saveUserLoggedInSharedPreference(true);
-              HelperFunctions.saveUserNameSharedPreference(usernameTextEditingController.text);
-              HelperFunctions.saveUserEmailSharedPreference(emailTextEditingController.text);
+              await HelperFunctions.saveUserLoggedInSharedPreference(true);
+              await HelperFunctions.saveUserNameSharedPreference(usernameTextEditingController.text);
+              await HelperFunctions.saveUserEmailSharedPreference(emailTextEditingController.text);
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatRoom()) );
         });
 
