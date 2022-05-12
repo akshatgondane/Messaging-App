@@ -37,18 +37,22 @@ class _SignInState extends State<SignIn>{
           .then((result) async {
         if (result != null)  {
           QuerySnapshot userInfoSnapshot;
-          DatabaseMethods().getUserInfo(emailEditingController.text).then((val){
+          DatabaseMethods().getUserInfo(emailEditingController.text).then((val) async {
             userInfoSnapshot=val;
-            HelperFunctions.saveUserLoggedInSharedPreference(true);
-            HelperFunctions.saveUserNameSharedPreference(
+            print(userInfoSnapshot);
+            await HelperFunctions.saveUserLoggedInSharedPreference(true);
+            await HelperFunctions.saveUserNameSharedPreference(
                 userInfoSnapshot.docs[0].get("name"));
-            HelperFunctions.saveUserEmailSharedPreference(
+            await HelperFunctions.saveUserEmailSharedPreference(
                 userInfoSnapshot.docs[0].get("email"));
+
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => ChatRoom()));
+
           });
 
 
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => ChatRoom()));
+
         } else {
           setState(() {
             isLoading = false;

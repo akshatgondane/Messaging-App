@@ -16,7 +16,7 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
 
-  late Stream<QuerySnapshot> chats;
+  Stream<QuerySnapshot>? chats;
   TextEditingController messageEditingController = new TextEditingController();
 
   Widget chatMessages(){
