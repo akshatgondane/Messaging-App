@@ -22,7 +22,6 @@
 | :-: | :-: |
 | Sign In | Sign Up |
 | <img src='screenshots/SignIn.png' height='300'>  | <img src='screenshots/SignUp.png' height='300'>
-
-| Chat Room  | Chat Page |
+| Chat Room | Chat Page |
 | <img src='screenshots/ChatRoom.png' height='300'>  | <img src='screenshots/ChatPage.png' height='300'>
 
