@@ -18,4 +18,4 @@
 
 ## Screenshots:
 
-<img src="screenshots/SignIn.png" width="350" title="hover text">
+<img src="screenshots/SignIn.png" width="200" title="hover text">
