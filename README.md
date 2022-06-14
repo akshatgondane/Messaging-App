@@ -24,4 +24,6 @@
 | <img src='screenshots/SignIn.png' height='400'>  | <img src='screenshots/SignUp.png' height='400'>
 | Chat Room | Chat Page |
 | <img src='screenshots/ChatRoom.png' height='400'>  | <img src='screenshots/ChatPage.png' height='400'>
+| Search |
+| <img src='screenshots/Search.png' height='400'> 
 
