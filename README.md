@@ -1,10 +1,10 @@
 # Messaging App
 
 
-## Description
+## Description:
 - This app is a Flutter based text messaging app that allows users to communicate in a secure environment through End-to-End Encryption. All the chats are encrypted and decrypted using **Advanced Encryption Standard(AES) Algorithm**. Users can easily register or login using their email address and then chat with anyone without the fear of privacy breaches.
 
-## Features
+## Features:
 - Clean and Simple UI.
 - Dark Theme.
 - Used Google Firebase for authentication and storing messages.
@@ -16,4 +16,6 @@
 - Forgot Password
 - Google Sign In
 
-<img src = "screenshots.SignIn.png" width = "200>
+## Screenshots:
+
+img src="screenshots/SignIn.png" width="350" title="hover text">
