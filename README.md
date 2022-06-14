@@ -20,5 +20,5 @@
 
 |     |     |
 | :-: | :-: |
-| Welcome Screen | Login |
-| <img src='screenshots/SignUp.png' height='300'> <img src='screeshots/SignIn.png' height='300'> | 
+| Welcome Screen |
+| <img src='screenshots/SignUp.png' height='300'> 
