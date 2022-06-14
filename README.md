@@ -15,3 +15,5 @@
 ## To be Implemented:
 - Forgot Password
 - Google Sign In
+
+<img src = "screenshots.SignIn" width = "200>
