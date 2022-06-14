@@ -18,8 +18,7 @@
 
 ## Screenshots:
 
-<img src="screenshots/SignIn.png" width="200">      <img src="screenshots/SignUp.png" width="200">
-
-<img src="screenshots/ChatPage.png" width="200">    <img src="screenshots/ChatRoom.png" width="200">
-
-<img src="screenshots/Search.png" width="200">
+|     |     |
+| :-: | :-: |
+| Welcome Screen | Login |
+| <img src='screenshots/SignUp' height='300'> <img src='screeshots/SignIn' height='300'> | 
