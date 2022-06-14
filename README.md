@@ -16,4 +16,4 @@
 - Forgot Password
 - Google Sign In
 
-<img src = "screenshots.SignIn" width = "200>
+<img src = "screenshots.SignIn.png" width = "200>
