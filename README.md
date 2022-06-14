@@ -18,4 +18,6 @@
 
 ## Screenshots:
 
-<img src="screenshots/SignIn.png" width="200" title="hover text">
+<img src="screenshots/SignIn.png" width="200">
+<img src="screenshots/SignUp.png" width="200">
+<img src="screenshots/ChatPage.png" width="200">
