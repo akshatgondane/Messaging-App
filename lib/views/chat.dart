@@ -1,9 +1,9 @@
-import 'dart:io';
 import 'package:messaging_app/helper/constants.dart';
 import 'package:messaging_app/services/database.dart';
 import 'package:messaging_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:messaging_app/helper/encryption.dart';
 
 class Chat extends StatefulWidget {
   final String chatRoomId;
@@ -15,9 +15,10 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-
   Stream<QuerySnapshot>? chats;
   TextEditingController messageEditingController = new TextEditingController();
+  final Encryption _encryption = new Encryption();
+
 
   Widget chatMessages(){
     return StreamBuilder(
@@ -48,11 +49,15 @@ class _ChatState extends State<Chat> {
     );
   }
 
-  addMessage() {
+
+
+
+
+  addMessage() async{
     if (messageEditingController.text.isNotEmpty) {
       Map<String, dynamic> chatMessageMap = {
         "sendBy": Constants.myName,
-        "message": messageEditingController.text,
+        "message": _encryption.encrypt(messageEditingController.text.toString()),
         'time': DateTime
             .now()
             .millisecondsSinceEpoch,
@@ -63,6 +68,8 @@ class _ChatState extends State<Chat> {
       setState(() {
         messageEditingController.text = "";
       });
+
+
     }
   }
 
@@ -146,6 +153,7 @@ class _ChatState extends State<Chat> {
 class MessageTile extends StatelessWidget {
   final String message;
   final bool sendByMe;
+  final Encryption _encryption = new Encryption();
 
   MessageTile({Key? key, required this.message, required this.sendByMe}) : super(key: key);
 
@@ -186,7 +194,7 @@ class MessageTile extends StatelessWidget {
             ],
           )
       ),
-      child: Text(message,
+      child: Text(_encryption.decrypt(message),
           textAlign: TextAlign.start,
           style: TextStyle(
               color: Colors.white,
